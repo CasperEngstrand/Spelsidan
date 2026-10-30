@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mina spel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topp">
+    <h1>Mina spel</h1>
+    <p class="intro">Bläddra bland spelen och filtrera efter genre.</p>
+  </header>
+
+  <main>
+    <div class="verktyg">
+      <div class="filter" id="filter" role="group" aria-label="Filtrera på kategori"></div>
+      <input type="search" id="sok" placeholder="Sök på namn" aria-label="Sök på namn">
+    </div>
+
+    <p class="antal" id="antal" aria-live="polite"></p>
+    <ul class="lista" id="lista"></ul>
+    <p class="tomt" id="tomt" hidden></p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

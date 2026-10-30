@@ -1,0 +1,154 @@
+:root {
+  --bakgrund: #eef1f8;
+  --yta: #ffffff;
+  --text: #14213d;
+  --dämpad: #5b6479;
+  --linje: #d5dbea;
+  --accent: #2f5bff;
+  --fps: #d6403a;
+  --rpg: #2a8a5c;
+  --sport: #e08a1e;
+  --avstånd: 1rem;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bakgrund);
+  color: var(--text);
+  font-family: "Trebuchet MS", "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+}
+
+.topp, main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.topp { padding-top: 2.5rem; padding-bottom: 1rem; }
+
+h1 {
+  margin: 0;
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.intro { margin: 0.5rem 0 0; color: var(--dämpad); }
+
+main { padding-bottom: 3rem; }
+
+.verktyg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--avstånd);
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.5rem 0 1rem;
+}
+
+.filter { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.filter button {
+  font: inherit;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--text);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filter button:hover { background: var(--yta); }
+
+.filter button[aria-pressed="true"] {
+  background: var(--text);
+  color: var(--yta);
+}
+
+button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+#sok {
+  font: inherit;
+  padding: 0.5rem 0.9rem;
+  border: 2px solid var(--linje);
+  border-radius: 8px;
+  background: var(--yta);
+  color: var(--text);
+  min-width: 0;
+  width: 14rem;
+  max-width: 100%;
+}
+
+.antal { margin: 0 0 var(--avstånd); color: var(--dämpad); font-size: 0.95rem; }
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--avstånd);
+}
+
+.kort {
+  background: var(--yta);
+  border-radius: 10px;
+  border-left: 8px solid var(--kat, var(--accent));
+  padding: 1rem 1.25rem 1.25rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.kort img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;   /* byt till 3 / 4 för stående omslag */
+  object-fit: cover;      /* byt till contain för att visa hela bilden */
+  border-radius: 6px;
+  background: var(--linje);
+}
+
+.kort h2 { margin: 0; font-size: 1.3rem; line-height: 1.2; }
+
+.kort .kategori {
+  margin: 0;
+  font-weight: 700;
+  color: var(--kat, var(--accent));
+}
+
+.kort[data-kategori="FPS"]   { --kat: var(--fps); }
+.kort[data-kategori="RPG"]   { --kat: var(--rpg); }
+.kort[data-kategori="Sport"] { --kat: var(--sport); }
+
+.tomt {
+  margin: 0;
+  padding: 2rem 1.25rem;
+  background: var(--yta);
+  border: 2px dashed var(--linje);
+  border-radius: 10px;
+  text-align: center;
+  color: var(--dämpad);
+}
+
+[hidden] { display: none !important; }
+
+@media (max-width: 800px) {
+  .lista { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 520px) {
+  .topp, main { padding-left: 1rem; padding-right: 1rem; }
+  h1 { font-size: 2.1rem; }
+  .lista { grid-template-columns: 1fr; }
+  #sok { width: 100%; }
+}
